@@ -29,7 +29,7 @@ recognition.onresult = function run(event) {
 function speak() {
     var synth = window.speechSynthesis;
 
-    speak_data = document.getElementById("textbox").value;
+    speak_data = "Taking your Selfie in 5 seconds!. Get Ready! "
     alert(speak_data);
 
     var utterThis = new SpeechSynthesisUtterance(speak_data);
@@ -43,25 +43,25 @@ function speak() {
     }, 5000);
 }
 
-
 camera = document.getElementById("camera");
 Webcam.set({
-    width: 360,
-    height: 250,
-    image_format: 'png',
-    png_quality: 90
+    width: 350,
+    height: 350,
+    image_format: 'jpeg',
+    jpeg_quality: 100
 });
 
+
 function take_snapshot() {
-    Webcam.snap(function(data_uri) {
-        document.getElementById("result").innerHTML = '<img id="selfie_image" src="' + data_uri + '"/>';
+    Webcam.snap(function(data_uri) { //argument
+        document.getElementById("result").innerHTML = '<img src="' + data_uri + '" id="selfie">';
     });
 }
 
 
 function save() {
-    link = document.getElementById("link");
-    image = document.getElementById("selfie_image").src;
-    link.href = image;
-    link.click();
+    a = document.getElementById("link");
+    img_src = document.getElementById("selfie").src;
+    a.href = img_src;
+    a.clcik();
 }
